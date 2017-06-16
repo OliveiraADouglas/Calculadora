@@ -1,7 +1,6 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      <ion-icon name="calculator"></ion-icon>
       Calculadora
     </ion-title>
   </ion-navbar>
@@ -10,7 +9,7 @@
 <ion-content padding>
   <ion-grid>
     <ion-row>
-      <ion-col><ion-input type="number" text-right large></ion-input></ion-col>
+      <ion-col><ion-input type="number" text-right large>123</ion-input></ion-col>
       <ion-col col-2>
         <button ion-button icon-only clear large>
           <ion-icon name="backspace"></ion-icon>
@@ -20,27 +19,33 @@
   </ion-grid>
   <ion-grid>
     <ion-row>
-      <ion-col><button ion-button block large>1</button></ion-col>
-      <ion-col><button ion-button block large>2</button></ion-col>
-      <ion-col><button ion-button block large>3</button></ion-col>
-      <ion-col><button ion-button block large>+</button> </ion-col>
+      <ion-col><button ion-button block large>sin</button></ion-col>
+      <ion-col><button ion-button block large>cos</button></ion-col>
+      <ion-col><button ion-button block large>pi</button></ion-col>
+      <ion-col><button ion-button block large (click)="limpaTela()">C</button></ion-col>
     </ion-row>
     <ion-row>
-      <ion-col><button ion-button block large>4</button></ion-col>
-      <ion-col><button ion-button block large>5</button></ion-col>
-      <ion-col><button ion-button block large>6</button></ion-col>
+      <ion-col><button ion-button block large (click)="insereDigito('1')">1</button></ion-col>
+      <ion-col><button ion-button block large (click)="insereDigito('2')">2</button></ion-col>
+      <ion-col><button ion-button block large (click)="insereDigito('3')">3</button></ion-col>
+      <ion-col><button ion-button block large (click)="setOperacao(true)">+</button> </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col><button ion-button block large (click)="insereDigito('4')">4</button></ion-col>
+      <ion-col><button ion-button block large (click)="insereDigito('5')">5</button></ion-col>
+      <ion-col><button ion-button block large (click)="insereDigito('6')">6</button></ion-col>
       <ion-col><button ion-button block large>-</button></ion-col>
     </ion-row>
     <ion-row>
-      <ion-col><button ion-button block large>7</button></ion-col>
-      <ion-col><button ion-button block large>8</button></ion-col>
-      <ion-col><button ion-button block large>9</button></ion-col>
+      <ion-col><button ion-button block large (click)="insereDigito('7')">7</button></ion-col>
+      <ion-col><button ion-button block large (click)="insereDigito('8')">8</button></ion-col>
+      <ion-col><button ion-button block large (click)="insereDigito('9')">9</button></ion-col>
       <ion-col><button ion-button block large>*</button></ion-col>
     </ion-row>
     <ion-row>
-      <ion-col><button ion-button block large>.</button></ion-col>
-      <ion-col><button ion-button block large>0</button></ion-col>
-      <ion-col><button ion-button block large>=</button></ion-col>
+      <ion-col><button ion-button block large (click)="insereDigito('.')">.</button></ion-col>
+      <ion-col><button ion-button block large (click)="insereDigito('0')">0</button></ion-col>
+      <ion-col><button ion-button block large (click)="calcula()">=</button></ion-col>
       <ion-col><button ion-button block large>/</button></ion-col>
     </ion-row>
   </ion-grid>
