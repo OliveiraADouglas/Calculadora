@@ -74,7 +74,13 @@ export class HomePage {
       }
 
       //guarda a operacao no vetor
-      this.operacoesFeitas[this.quantOperacoesFeitas] = this.n1 + this.operacaoEscolhida + this.n2 + " = " + resultado;
+      if (this.operacaoEscolhida == "sin")
+        this.operacoesFeitas[this.quantOperacoesFeitas] = this.operacaoEscolhida + "(" + this.n1 + ")";
+      else if (this.operacaoEscolhida == "cos")
+        this.operacoesFeitas[this.quantOperacoesFeitas] = this.operacaoEscolhida + "(" + this.n1 + ")";
+      else
+        this.operacoesFeitas[this.quantOperacoesFeitas] = this.n1 + this.operacaoEscolhida + this.n2 + " = " + resultado;
+      this.showToast(this.operacoesFeitas[this.quantOperacoesFeitas]);
       this.quantOperacoesFeitas += 1;
 
       this.n1 = resultado;
@@ -84,11 +90,13 @@ export class HomePage {
 
   setOperacao(op: string){
     //armazena qual operação será feita e guarda o valor da tela em n1
-
     this.operacao = true; //marca que uma operação foi escolhida
     this.operacaoEscolhida = op; //guarda a operação
     this.n1 = +this.tela; //guarda o valor da tela em n1
     this.tela = ""; //apaga a tela
+
+    if(op == "sin" || op == "cos")
+      this.calcula();
   }
 
   showToast(text: string) {
