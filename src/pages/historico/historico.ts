@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AlertController} from 'ionic-angular';
-import { List } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-historico',
@@ -9,9 +9,7 @@ import { List } from 'ionic-angular';
 })
 export class HistoricoPage {
 
-  operacoesFeitas: string[] = ['ola','hello'];
-  lop: List;
-
+  
   constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
 
   }

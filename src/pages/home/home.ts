@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { ToastController} from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -18,7 +19,7 @@ export class HomePage {
   operacoesFeitas: string [] = []; //guarda as operacoes efetuadas
   quantOperacoesFeitas: number = 0; //guarda a quantidade de operacoes feitas
   
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController) { }
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, public alertCtrl: AlertController) { }
 
   insereDigito(n: string){
     if (this.tela == "" && n == "."){
@@ -80,7 +81,8 @@ export class HomePage {
         this.operacoesFeitas[this.quantOperacoesFeitas] = this.operacaoEscolhida + "(" + this.n1 + ")";
       else
         this.operacoesFeitas[this.quantOperacoesFeitas] = this.n1 + this.operacaoEscolhida + this.n2 + " = " + resultado;
-      this.showToast(this.operacoesFeitas[this.quantOperacoesFeitas]);
+      
+      //this.showToast(this.operacoesFeitas[this.quantOperacoesFeitas]);
       this.quantOperacoesFeitas += 1;
 
       this.n1 = resultado;
@@ -97,6 +99,19 @@ export class HomePage {
 
     if(op == "sin" || op == "cos")
       this.calcula();
+  }
+
+  operacaoSelecionada(op: string){
+    this.showAlert(op);
+  }
+
+  showAlert(texto: string) {
+    let alert = this.alertCtrl.create({
+      title: '',
+      subTitle: texto,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   showToast(text: string) {
@@ -142,5 +157,3 @@ export class HomePage {
     return Math.cos(n);
   }
 }
-
-
