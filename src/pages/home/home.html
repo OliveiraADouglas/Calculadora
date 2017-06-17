@@ -9,9 +9,9 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col><ion-label type="number" text-right large>tela</ion-label></ion-col>
+      <ion-col><ion-label text-right>{{tela}}</ion-label></ion-col>
       <ion-col col-2>
-        <button ion-button icon-only clear large>
+        <button ion-button icon-only clear large (click)="removeDigito()">
           <ion-icon name="backspace"></ion-icon>
         </button>
       </ion-col>
@@ -46,7 +46,7 @@
       <ion-col col-3><button ion-button block large (click)="insereDigito('.')">.</button></ion-col>
       <ion-col col-3><button ion-button block large (click)="insereDigito('0')">0</button></ion-col>
       <ion-col col-3><button ion-button block large (click)="calcula()">=</button></ion-col>
-      <ion-col col-3><button ion-button block large (click)="setOperacao('-')">/</button></ion-col>
+      <ion-col col-3><button ion-button block large (click)="setOperacao('/')">/</button></ion-col>
     </ion-row>
   </ion-grid>
 

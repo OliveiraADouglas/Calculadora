@@ -6,6 +6,7 @@ import { ToastController} from 'ionic-angular';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage {
   n1: number = 0;
   n2: number = 0;
@@ -13,8 +14,10 @@ export class HomePage {
   decimal: boolean = false; //marca que o número inserido já é decimal, portanto não pode ser inserido outro ponto
   tela: string = "";
   operacaoEscolhida: string = "";
-  numeroPi: string = "3.1415926";
-
+//  numeroPi: string = "3.1415926";
+  operacoesFeitas: string [] = []; //guarda as operacoes efetuadas
+  quantOperacoesFeitas: number = 0; //guarda a quantidade de operacoes feitas
+  
   constructor(public navCtrl: NavController, public toastCtrl: ToastController) { }
 
   insereDigito(n: string){
@@ -22,30 +25,21 @@ export class HomePage {
       // se a tela estiver vazia e um ponto for inserido
       this.tela = "0";
       this.decimal = true;
-      // this.showToast("decimal true tela vazia");
     }
 
     else if (this.tela == "" && n == "0"){return } //se a tela estiver vazia e o zero for inserido
 
     else if (!this.decimal && n == "."){
       this.decimal = true;
-      // this.showToast("decimal true");
     }
 
     else if (this.decimal && n == "."){return }
 
     this.tela = this.tela + n;
+  }
 
-    // if(!this.operacao){
-    //   //coloca tela em n1
-    //   this.n1 = +this.tela;
-    // }
-    // else{
-    //   //coloca tela em n2
-    //   this.n2 = +this.tela;
-    // }
-
-    this.showToast(this.tela);
+  removeDigito(){
+    this.tela = this.tela.substring(0,(this.tela.length - 1));
   }
 
   resetaTela(){
@@ -61,23 +55,30 @@ export class HomePage {
       this.n2 = +this.tela; //guarda o valor de n2
 
       if(this.operacaoEscolhida == "+"){
-        resultado = add(this.n1, this.n2);
+        resultado = this.add(this.n1, this.n2);
       }
       else if(this.operacaoEscolhida == "-"){
-        resultado = sub(this.n1, this.n2);
+        resultado = this.sub(this.n1, this.n2);
       }
       else if(this.operacaoEscolhida == "*"){
-        resultado = mul(this.n1, this.n2);
+        resultado = this.mul(this.n1, this.n2);
       }
       else if(this.operacaoEscolhida == "/"){
-        if (this.n2 == 0) //trata a divisão por zero
-          this.showToast("Impossível dividir por 0");
-        else
-          resultado = div(this.n1, this.n2);
+        resultado = this.div(this.n1, this.n2);
       }
+      else if(this.operacaoEscolhida == "sin"){
+        resultado = this.sin(this.n1);
+      }
+      else if(this.operacaoEscolhida == "cos"){
+        resultado = this.cos(this.n1);
+      }
+
+      //guarda a operacao no vetor
+      this.operacoesFeitas[this.quantOperacoesFeitas] = this.n1 + this.operacaoEscolhida + this.n2 + " = " + resultado;
+      this.quantOperacoesFeitas += 1;
+
       this.n1 = resultado;
       this.tela = "" + resultado;
-      this.showToast(this.n1 + this.operacaoEscolhida + this.n2 + " = " + resultado);
     }
   }
 
@@ -99,6 +100,39 @@ export class HomePage {
   }
 
   pi(){
-    this.tela = this.numeroPi;
+    this.tela = ""+ Math.PI;
+  }
+
+
+  //funcoes da calculadora
+
+  add(n1: number, n2: number): number{
+    var result: number = n1 + n2;
+    return result;
+  }
+
+  sub(n1: number, n2: number): number{
+    var result: number = n1 - n2;
+    return result;
+  }
+
+  mul(n1: number, n2: number): number{
+    var result: number = n1 * n2;
+    return result;
+  }
+
+  div(n1: number, n2: number): number{
+    var result: number = n1 / n2;
+    return result;
+  }
+
+  sin(n: number): number{
+    return Math.sin(n);
+  }
+
+  cos(n: number): number{
+    return Math.cos(n);
   }
 }
+
+

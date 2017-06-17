@@ -1,25 +1,28 @@
 //Funções básicas de uma calculadora
+class Calculadora{
+	constructor(){}
 
-function add(n1: number, n2: number){
-	var result: number = n1 + n2;
-	return result;
+	add(n1: number, n2: number): number{
+		var result: number = n1 + n2;
+		return result;
+	}
+
+	sub(n1: number, n2: number): number{
+		var result: number = n1 - n2;
+		return result;
+	}
+
+	mul(n1: number, n2: number): number{
+		var result: number = n1 * n2;
+		return result;
+	}
+
+	div(n1: number, n2: number): number{
+		var result: number = n1 / n2;
+		return result;
+	}
+
+	sin(n: number){}
+
+	cos(n: number){}
 }
-
-function sub(n1: number, n2: number){
-	var result: number = n1 - n2;
-	return result;
-}
-
-function mul(n1: number, n2: number){
-	var result: number = n1 * n2;
-	return result;
-}
-
-function div(n1: number, n2: number){
-	var result: number = n1 / n2;
-	return result;
-}
-
-function sin(n: number){}
-
-function cos(n: number){}
