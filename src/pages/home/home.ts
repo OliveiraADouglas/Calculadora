@@ -5,7 +5,7 @@ import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html' 
 })
 
 export class HomePage {
@@ -76,11 +76,11 @@ export class HomePage {
 
       //guarda a operacao no vetor
       if (this.operacaoEscolhida == "sin")
-        this.operacoesFeitas[this.quantOperacoesFeitas] = this.operacaoEscolhida + "(" + this.n1 + ")";
+        this.operacoesFeitas[this.quantOperacoesFeitas] = this.operacaoEscolhida + "(" + this.n1 + ")" + " = " + resultado;
       else if (this.operacaoEscolhida == "cos")
-        this.operacoesFeitas[this.quantOperacoesFeitas] = this.operacaoEscolhida + "(" + this.n1 + ")";
+        this.operacoesFeitas[this.quantOperacoesFeitas] = this.operacaoEscolhida + "(" + this.n1 + ")" + " = " + resultado;
       else
-        this.operacoesFeitas[this.quantOperacoesFeitas] = this.n1 + this.operacaoEscolhida + this.n2 + " = " + resultado;
+        this.operacoesFeitas[this.quantOperacoesFeitas] = this.n1 + " " + this.operacaoEscolhida + " " +  this.n2 + " = " + resultado;
       
       //this.showToast(this.operacoesFeitas[this.quantOperacoesFeitas]);
       this.quantOperacoesFeitas += 1;
